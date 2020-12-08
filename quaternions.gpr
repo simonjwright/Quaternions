@@ -1,0 +1,28 @@
+library project Quaternions is
+
+   type Library_T is ("static", "relocatable");
+   Library_Type : Library_T := external ("LIBRARY_TYPE", "static");
+
+   for Source_Dirs use ("src");
+
+   for Library_Name use "quaternions";
+   for Library_Kind use Library_Type;
+   for Library_Dir use "./lib-" & Library_Type;
+
+   for Object_Dir use ".build-" & Library_Type;
+
+   for Create_Missing_Dirs use "true";
+
+   package Compiler is
+      for Default_Switches ("Ada") use
+        (
+         "-g",       --  for debug symbols
+         "-O2",      --  standard optimisation
+         "-gnatqQ",  --  to keep ALI files even if there are compilation errors
+         "-gnatafo", --  assertions, full reports, integer overflow
+         "-gnaty",   --  standard style checks
+         "-gnatwaL"  --  all standard warnings except for elaboration
+        );
+   end Compiler;
+
+end Quaternions;

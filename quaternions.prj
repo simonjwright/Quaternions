@@ -1,0 +1,3 @@
+$HOME=/Users/simon
+casing=$HOME/.emacs_case_exceptions
+gpr_file=quaternions.gpr
